@@ -39,10 +39,8 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 				message = "";
 			
 			if(message.length() > 0){
-				//MyDialog dialog = new MyDialog("The Winner is " + message);
-				JOptionPane.showMessageDialog(null, "The Winner is " + message, "Game Over",JOptionPane.INFORMATION_MESSAGE);
-				Thread t = new Thread();
-				t.start();
+				JOptionPane.showMessageDialog(null, "The Winner is " + message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+
 			}
 		}
 	}
@@ -58,11 +56,11 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 	}
 	
 	public static void main (String[] args){
-		JFrame game = new JFrame("Tic Tac Toe");
-		game.add(new TicTacToeGame());
-		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.pack();
-		game.setVisible(true);
+		JFrame gameWindow = new JFrame("Tic Tac Toe");
+		gameWindow.add(new TicTacToeGame());
+		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gameWindow.pack();
+		gameWindow.setVisible(true);
 	}
 }
 
