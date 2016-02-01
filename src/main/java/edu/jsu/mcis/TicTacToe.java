@@ -20,18 +20,12 @@ public class TicTacToe {
 				board[i][j] = " ";
 	}
 	
-	public void printBoard() {
-        System.out.println("-------------");
-        for (int i = 0; i < 3; i++){
-            System.out.print("| ");
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " | ");
-            }
-            System.out.println();
-            System.out.println("-------------");
-        }
-    }
-
+	public String getWhoseTurnItIs(){
+		if(isXTurn)
+			return "X";
+		else 
+			return "O";
+	}
 	
 	public void markBoard(int row, int column){
 		if(checkForValidSpot(row, column)){
@@ -69,7 +63,7 @@ public class TicTacToe {
 		return true;
 	}
 	
-	public boolean isGameOver(){
+	public boolean checkForTie(){
 		return !(turnNumber < 9);
 	}
 	
@@ -95,9 +89,9 @@ public class TicTacToe {
 				verticalWin = false;
 		}
 		
-		if(board[0][0] != player && board[1][1] != player && board[2][2] != player)
+		if(board[0][0] != player || board[1][1] != player || board[2][2] != player)
 			diagonalWin = false;
-		if(board[0][2] != player && board[1][1] != player && board[2][0] != player)
+		if(board[0][2] != player || board[1][1] != player || board[2][0] != player)
 			diagonalWin1 = false;
 		
 		if((horizontalWin || verticalWin || diagonalWin || diagonalWin1) && player == "X")
@@ -109,7 +103,7 @@ public class TicTacToe {
 	}
 	
 	public String declareWin(){
-		if(isGameOver())
+		if(checkForTie())
 			return "TIE";
 		else if(xIsWinner)
 			return "X";

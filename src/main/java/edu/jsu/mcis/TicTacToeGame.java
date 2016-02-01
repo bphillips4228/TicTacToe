@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class TicTacToeGame extends JPanel implements ActionListener{
 	
-	private TicTacToe model;
+	public TicTacToe model;
 	private JButton[][] button;
 
 	public TicTacToeGame(){
@@ -26,9 +26,9 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 		
 	}
 	
-	public void checkForWin(){
-		if(!model.isGameOver()){
-			String message;
+	public void checkForWin(int row, int column){
+		String message;
+		if(model.isGameOver(row, column)){
 			if(model.declareWin() == "X")
 				message = "X";
 			else if(model.declareWin() == "O")
@@ -40,7 +40,7 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 			
 			if(message.length() > 0){
 				JOptionPane.showMessageDialog(null, "The Winner is " + message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
-
+				System.exit(0);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 		int column = Integer.parseInt(location.substring(1,2));
 		model.markBoard(row,column);
 		button.setText(model.checkSpot(row,column));
-		checkForWin();
+		checkForWin(row, column);
 	}
 	
 	public static void main (String[] args){
@@ -61,6 +61,8 @@ public class TicTacToeGame extends JPanel implements ActionListener{
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameWindow.pack();
 		gameWindow.setVisible(true);
-	}
+	}	
 }
+
+
 

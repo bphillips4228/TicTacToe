@@ -41,7 +41,7 @@ public class TicTacToeTest {
 	@Test
 	public void testGameIsNotOverAfterTheFirstMark() {
 		ttt.markBoard(0,0);
-		assertFalse(ttt.isGameOver());
+		assertFalse(ttt.checkForTie());
 	}
 	
 	@Test
